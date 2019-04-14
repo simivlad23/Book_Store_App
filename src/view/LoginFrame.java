@@ -1,16 +1,10 @@
 package view;
 
-import model.User;
-import service.NotUsed.AccountService;
-import service.NotUsed.PersonSercive;
-import service.UserService;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginFrame extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame  {
 
 
 
@@ -24,22 +18,18 @@ public class LoginFrame extends JFrame implements ActionListener {
     JButton loginButton = new JButton("LOGIN");
     JButton resetButton = new JButton("RESET");
     JCheckBox showPassword = new JCheckBox("Show Password");
-    UserService userService;
-    PersonSercive personSercive;
-    AccountService accountService;
+
 
     // form here we deleted the other service Class which allows us to make CRUD operations
-    public LoginFrame(UserService userService) {
+    public LoginFrame() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
-        addActionEvent();
-        this.userService=userService;
-        this.accountService= accountService;
-        this.personSercive = personSercive;
+
         setLocation(450,150);
         this.setSize(WIDTH,HEIGHT);
 
+        this.setVisible(true);
 
 
     }
@@ -70,51 +60,24 @@ public class LoginFrame extends JFrame implements ActionListener {
         container.add(resetButton);
     }
 
-    public void addActionEvent() {
-        loginButton.addActionListener(this);
-        resetButton.addActionListener(this);
-        showPassword.addActionListener(this);
+
+
+
+    public void addLoginActionListener(ActionListener listener) {
+        System.out.println("A ajuns aici");
+        loginButton.addActionListener(listener);
+    }
+
+    public void addResetActionListener(ActionListener listener) {
+        resetButton.addActionListener(listener);
+    }
+    public void addShowPassActionListener(ActionListener listener) {
+        resetButton.addActionListener(listener);
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //Coding Part of LOGIN button
-        if (e.getSource() == loginButton) {
 
-            String userText;
-            String pwdText;
-            userText = userTextField.getText();
-            pwdText = passwordField.getText();
-
-            System.out.println("");
-
-            User user = userService.login(userText,pwdText);
-
-
-            if (user!=null) {
-                JOptionPane.showMessageDialog(this, "Login Successful");
-
-                this.setVisible(false);
-                if(user.isAdmin())
-                {
-                   AdminFrame adminFrame = new AdminFrame();
-
-                    //TODO Admin Window;
-                }
-                else {
-
-                    UserView regularUserFrame = new UserView();
-                    regularUserFrame.setTitle("BOOK Store");
-                    regularUserFrame.setVisible(true);
-
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-            }
-
-        }
-        //Coding Part of RESET button
+       /* //Coding Part of RESET button
         if (e.getSource() == resetButton) {
             userTextField.setText("");
             passwordField.setText("");
@@ -129,8 +92,36 @@ public class LoginFrame extends JFrame implements ActionListener {
 
 
         }
+    */
+
+    public JCheckBox getShowPassword() {
+        return showPassword;
     }
 
+    public String getUsermane()
+    {
+        return userTextField.getText();
+    }
+    public String getPassword()
+    {
+        return passwordField.getText();
+    }
+
+    public JTextField getUserTextField() {
+        return userTextField;
+    }
+
+    public void setUserTextField(JTextField userTextField) {
+        this.userTextField = userTextField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public void setPasswordField(JPasswordField passwordField) {
+        this.passwordField = passwordField;
+    }
 }
 
 

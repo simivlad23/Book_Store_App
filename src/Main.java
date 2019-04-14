@@ -1,3 +1,4 @@
+import controller.LoginController;
 import repository.OrderReository;
 import repository.ProdusRepository;
 import repository.UserRepository;
@@ -23,13 +24,11 @@ public class Main {
         OrderReository orderReository = new OrderRepositoryImpl(jdbConnectionWrapper);
 
 
-
-
         // here we initialize repo
         //TODO i have to create also service class for all repository
         UserService userService = new UserServiceImpl(userRepository);
         ProductService productService = new ProductServiceImpl(produsRepository);
-        OrderService orderService = new OrderServiceImpl(orderReository,produsRepository);
+        OrderService orderService = new OrderServiceImpl(orderReository, produsRepository);
 
 
         //TODO testat product repository methods
@@ -46,8 +45,8 @@ public class Main {
         //Product product = new Product("1243","ceva 2","df45","asd",25,100);
 
 
-       // productService.save(product);
-       //produsRepository(product);
+        // productService.save(product);
+        //produsRepository(product);
 
         //Order order = new Order(2L,10);
 
@@ -59,9 +58,10 @@ public class Main {
 
 
 
+        LoginFrame frame = new LoginFrame();
+        LoginController loginController = new LoginController(frame,userService);
 
-         LoginFrame frame = new LoginFrame(userService);
-         frame.setVisible(true);
+
        /* LoginFrame frame = new LoginFrame(userService);
 
         frame.setTitle("Login Form");
@@ -71,4 +71,6 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);*/
     }
+
+
 }
