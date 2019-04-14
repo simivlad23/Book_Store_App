@@ -4,6 +4,7 @@ import model.User;
 import service.NotUsed.AccountService;
 import service.NotUsed.PersonSercive;
 import service.UserService;
+import view.NotUsed.RegularUserFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -96,7 +97,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 else {
 
                     RegularUserFrame regularUserFrame = new RegularUserFrame(userService,accountService,personSercive);
-                    regularUserFrame.setTitle("Bank");
+                    regularUserFrame.setTitle("BOOK Store");
 
                 }
             } else {

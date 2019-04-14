@@ -1,4 +1,4 @@
-package view;
+package view.NotUsed;
 
 import service.NotUsed.AccountService;
 import service.NotUsed.PersonSercive;

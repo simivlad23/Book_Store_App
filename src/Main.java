@@ -12,9 +12,7 @@ import service.UserService;
 import service.impl.OrderServiceImpl;
 import service.impl.ProductServiceImpl;
 import service.impl.UserServiceImpl;
-import view.LoginFrame;
-
-import javax.swing.*;
+import view.UserView;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,23 +55,20 @@ public class Main {
         //orderService.addOrder(order);
 
 
-
-
-
-
-
+        UserView userView = new UserView();
+        userView.setVisible(true);
 
 
 
 
        //  LoginFrame frame = new LoginFrame(userService,accountService,personSercive);
-        LoginFrame frame = new LoginFrame(userService);
+       /* LoginFrame frame = new LoginFrame(userService);
 
         frame.setTitle("Login Form");
         frame.setVisible(true);
 
         frame.setBounds(500, 50, 400, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(false);*/
     }
 }

@@ -1,4 +1,4 @@
-package view;
+package view.NotUsed;
 
 import model.notUsed.Account;
 import service.NotUsed.AccountService;

@@ -1,4 +1,4 @@
-package view;
+package view.NotUsed;
 
 import model.notUsed.Person;
 import repository.NotUsed.PersonRepository;
