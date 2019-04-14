@@ -10,7 +10,7 @@ public interface ProductService {
     public void addproduct(Product product);
     public void removeProduct(Long idProd);
 
-    public void subStok(Long idProd,int stok);
+    public void subStok(Product product);
     public void addStok(Long idProd,int stok);
 
 

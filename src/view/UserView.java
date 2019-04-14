@@ -192,7 +192,11 @@ public class UserView extends JFrame {
         sellBtn.addActionListener(listener);
     }
 
+    public JTextField getIsbnSell() {
+        return isbnSell;
+    }
 
-
-
+    public JSpinner getSpinner() {
+        return spinner;
+    }
 }

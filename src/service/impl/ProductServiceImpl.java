@@ -44,16 +44,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void subStok(Long idProd, int stok) {
+    public void subStok(Product product) {
 
-        Product product = produsRepository.findById(idProd);
-        //TODO validation here
-        if (product.getQuantity() - stok < 0)
-            System.out.println("Soc insuficient");
-        else {
-            int stoc = product.getQuantity() - stok;
             produsRepository.update(product);
-        }
 
     }
 
