@@ -3,6 +3,7 @@ package view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 //TODO extend observer
@@ -82,7 +83,7 @@ public class UserView extends JFrame {
 
 
         initializeView();
-        setVisible(false);
+        setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -174,6 +175,15 @@ public class UserView extends JFrame {
     public void setLoggedInUser(String userName) {
         this.findABookLabel.setText("Logged in as: " + userName);
     }
+
+    public void refreshProductTable(Object[][] data, String[] columnNames) {
+        DefaultTableModel tableModel = (DefaultTableModel) searchResultTable.getModel();
+        tableModel.setDataVector(data, columnNames);
+        tableModel.setColumnIdentifiers(columnNames);
+        tableModel.fireTableDataChanged();
+    }
+
+
     // TODO search part
 
     //TODO refreshOrderTable

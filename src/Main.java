@@ -1,4 +1,5 @@
 import controller.LoginController;
+import controller.UserController;
 import repository.OrderReository;
 import repository.ProdusRepository;
 import repository.UserRepository;
@@ -12,23 +13,43 @@ import service.UserService;
 import service.impl.OrderServiceImpl;
 import service.impl.ProductServiceImpl;
 import service.impl.UserServiceImpl;
+import utils.DataConvertorBook;
+import utils.impl.DataConverterIBookImpl;
+import view.AdminFrame;
 import view.LoginFrame;
+import view.UserView;
 
 public class Main {
+
+    private static DataConvertorBook dataConvertorBook;
+    private static UserService userService;
+    private static ProductService productService;
+    private static OrderService orderService;
+    //private static ContextHolder contextHolder;
+    private static LoginController loginController;
+    private static UserView userView;
+    private static AdminFrame adminFrame;
+
+
+
     public static void main(String[] args) {
         JDBConnectionWrapper jdbConnectionWrapper = new JDBConnectionWrapper("bookstore");
 
+
+        dataConvertorBook = new DataConverterIBookImpl();
         // here we initialize repo
         UserRepository userRepository = new UserRepositoryImpl(jdbConnectionWrapper);
         ProdusRepository produsRepository = new ProdusRepositoryImpl(jdbConnectionWrapper);
         OrderReository orderReository = new OrderRepositoryImpl(jdbConnectionWrapper);
 
 
-        // here we initialize repo
+        // here we initialize service
         //TODO i have to create also service class for all repository
-        UserService userService = new UserServiceImpl(userRepository);
-        ProductService productService = new ProductServiceImpl(produsRepository);
-        OrderService orderService = new OrderServiceImpl(orderReository, produsRepository);
+        userService = new UserServiceImpl(userRepository);
+        productService = new ProductServiceImpl(produsRepository);
+        orderService = new OrderServiceImpl(orderReository, produsRepository);
+
+
 
 
         //TODO testat product repository methods
@@ -58,19 +79,20 @@ public class Main {
 
 
 
-        LoginFrame frame = new LoginFrame();
+        /*LoginFrame frame = new LoginFrame();
         LoginController loginController = new LoginController(frame,userService);
+*/
+        openLogin();
 
-
-       /* LoginFrame frame = new LoginFrame(userService);
-
-        frame.setTitle("Login Form");
-        frame.setVisible(true);
-
-        frame.setBounds(500, 50, 400, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);*/
     }
 
+
+    public static void openUserView() {
+        UserController userController = new UserController(new UserView(),userService,dataConvertorBook,orderService,productService);
+    }
+
+    public static void openLogin() {
+        LoginController loginView = new LoginController(new LoginFrame(),userService,dataConvertorBook,orderService,productService);
+    }
 
 }

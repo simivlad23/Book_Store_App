@@ -1,7 +1,10 @@
 package controller;
 
 import model.User;
+import service.OrderService;
+import service.ProductService;
 import service.UserService;
+import utils.DataConvertorBook;
 import view.AdminFrame;
 import view.LoginFrame;
 import view.UserView;
@@ -11,15 +14,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginController {
-    private final UserService userService;
-    LoginFrame loginFrame;
+    private LoginFrame loginFrame;
+    private UserService userService;
+    private ProductService productService;
+    private OrderService orderService;
+    private DataConvertorBook dataConvertorBook;
 
-    // putem sa trimitem ca si parametru si un data convertor
+    public LoginController(LoginFrame loginFrame,
+                          UserService userService,
+                          DataConvertorBook dataConvertorBook,
+                          OrderService orderService,
+                          ProductService productService) {
 
-    public LoginController(LoginFrame loginView, UserService userService) {
-
+        this.productService = productService;
+        this.orderService = orderService;
+        this.loginFrame = loginFrame;
         this.userService = userService;
-        this.loginFrame = loginView;
+        this.dataConvertorBook = dataConvertorBook;
+
         // TODO alte servivi de asignat aici
 
 
@@ -66,8 +78,9 @@ public class LoginController {
 
 
                     System.out.println("Logare ca regular User");
-                    UserView regularUserFrame = new UserView();
-                    UserController userController = new UserController(regularUserFrame,userService);
+                    UserController userController = new UserController(new UserView(),userService,dataConvertorBook,orderService,productService);
+                    /*UserView regularUserFrame = new UserView();
+                    UserController userController = new UserController(regularUserFrame,userService);*/
 
 
                 }
