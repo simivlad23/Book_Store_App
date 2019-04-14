@@ -21,10 +21,10 @@ public class LoginController {
     private DataConvertorBook dataConvertorBook;
 
     public LoginController(LoginFrame loginFrame,
-                          UserService userService,
-                          DataConvertorBook dataConvertorBook,
-                          OrderService orderService,
-                          ProductService productService) {
+                           UserService userService,
+                           DataConvertorBook dataConvertorBook,
+                           OrderService orderService,
+                           ProductService productService) {
 
         this.productService = productService;
         this.orderService = orderService;
@@ -58,37 +58,29 @@ public class LoginController {
             userText = loginFrame.getUsermane();
             pwdText = loginFrame.getPassword();
 
-            System.out.println(userText +" "+ pwdText);
+            System.out.println(userText + " " + pwdText);
 
-            User user = userService.login(userText,pwdText);
+            User user = userService.login(userText, pwdText);
 
-
-            if (user!=null) {
+            if (user != null) {
                 JOptionPane.showMessageDialog(loginFrame, "Login Successful");
 
                 loginFrame.setVisible(false);
-                if(user.isAdmin())
-                {
+                if (user.isAdmin()) {
                     System.out.println("Logare ca si Admin");
                     AdminFrame adminFrame = new AdminFrame();
                     //AdminController adminController = new AdminController();
-
-                }
-                else {
-
+                } else {
 
                     System.out.println("Logare ca regular User");
-                    UserController userController = new UserController(new UserView(),userService,dataConvertorBook,orderService,productService);
-                    /*UserView regularUserFrame = new UserView();
-                    UserController userController = new UserController(regularUserFrame,userService);*/
-
-
+                    UserController userController = new UserController(new UserView(), userService, dataConvertorBook, orderService, productService);
                 }
             } else {
                 JOptionPane.showMessageDialog(loginFrame, "Invalid Username or Password");
             }
         }
     }
+
     private class ResetActionListener implements ActionListener {
 
         @Override
@@ -97,12 +89,12 @@ public class LoginController {
             loginFrame.getUserTextField().setText("");
         }
     }
+
     private class ShowPassActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            //TODO Nu merge partea de show password
             if (loginFrame.getShowPassword().isSelected()) {
                 loginFrame.getPasswordField().setEchoChar((char) 0);
             } else {

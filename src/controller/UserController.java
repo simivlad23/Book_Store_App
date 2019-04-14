@@ -7,6 +7,8 @@ import service.UserService;
 import utils.DataConvertorBook;
 import view.UserView;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class UserController {
@@ -39,9 +41,30 @@ public class UserController {
         this.userView.refreshProductTable(itemData,itemColumnNames);
 
 
-
         //set action listerner
+        this.userView.addSearchActionListener(new SearchActionListener());
+        this.userView.addSellActionListener(new SellActionListener());
 
 
     }
+
+
+    private class SellActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //TODO sell part using productSevice  and also orderSevice
+            // TODO and also here will validate the data;
+            System.out.println("Sell a fost apelat");
+        }
+    }
+    private class SearchActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           //TODO serch part here using productService and the fields form UI
+            System.out.println("Search a fost apelat");
+        }
+    }
+
 }

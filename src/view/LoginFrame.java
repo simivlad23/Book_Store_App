@@ -71,28 +71,9 @@ public class LoginFrame extends JFrame  {
     public void addResetActionListener(ActionListener listener) {
         resetButton.addActionListener(listener);
     }
-    public void addShowPassActionListener(ActionListener listener) {
-        resetButton.addActionListener(listener);
+    public void addShowPassActionListener(ActionListener listener) {showPassword.addActionListener(listener);
     }
 
-
-
-       /* //Coding Part of RESET button
-        if (e.getSource() == resetButton) {
-            userTextField.setText("");
-            passwordField.setText("");
-        }
-        //Coding Part of showPassword JCheckBox
-        if (e.getSource() == showPassword) {
-            if (showPassword.isSelected()) {
-                passwordField.setEchoChar((char) 0);
-            } else {
-                passwordField.setEchoChar('*');
-            }
-
-
-        }
-    */
 
     public JCheckBox getShowPassword() {
         return showPassword;

@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 //TODO extend observer
 public class UserView extends JFrame {
@@ -184,16 +185,13 @@ public class UserView extends JFrame {
     }
 
 
-    // TODO search part
-
-    //TODO refreshOrderTable
-    // TODO refershProductTable
-    //TODO initView
-
-    // TODO method for all button on my view
-   /* public void addAddToBasketActionListener(ActionListener listener) {
+    public void addSearchActionListener(ActionListener listener) {
         searchBtn.addActionListener(listener);
-    }*/
+    }
+    public void addSellActionListener(ActionListener listener) {
+        sellBtn.addActionListener(listener);
+    }
+
 
 
 
