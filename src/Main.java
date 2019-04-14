@@ -1,4 +1,3 @@
-import model.Product;
 import repository.OrderReository;
 import repository.ProdusRepository;
 import repository.UserRepository;
@@ -12,7 +11,7 @@ import service.UserService;
 import service.impl.OrderServiceImpl;
 import service.impl.ProductServiceImpl;
 import service.impl.UserServiceImpl;
-import view.UserView;
+import view.LoginFrame;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,10 +43,10 @@ public class Main {
 
         userService.save(user);*/
 
-        Product product = new Product("1243","ceva 2","df45","asd",25,100);
+        //Product product = new Product("1243","ceva 2","df45","asd",25,100);
 
 
-        productService.save(product);
+       // productService.save(product);
        //produsRepository(product);
 
         //Order order = new Order(2L,10);
@@ -55,13 +54,14 @@ public class Main {
         //orderService.addOrder(order);
 
 
-        UserView userView = new UserView();
-        userView.setVisible(true);
+//        UserView userView = new UserView();
+//        userView.setVisible(true);
 
 
 
 
-       //  LoginFrame frame = new LoginFrame(userService,accountService,personSercive);
+         LoginFrame frame = new LoginFrame(userService);
+         frame.setVisible(true);
        /* LoginFrame frame = new LoginFrame(userService);
 
         frame.setTitle("Login Form");

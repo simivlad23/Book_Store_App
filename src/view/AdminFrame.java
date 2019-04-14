@@ -31,6 +31,7 @@ public class AdminFrame extends JFrame{
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     private void initializeView() {

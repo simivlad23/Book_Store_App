@@ -4,7 +4,6 @@ import model.User;
 import service.NotUsed.AccountService;
 import service.NotUsed.PersonSercive;
 import service.UserService;
-import view.NotUsed.RegularUserFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +12,10 @@ import java.awt.event.ActionListener;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
+
+
+    private static final int WIDTH = 400;
+    private static final int HEIGHT = 500;
     Container container = getContentPane();
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
@@ -34,6 +37,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         this.userService=userService;
         this.accountService= accountService;
         this.personSercive = personSercive;
+        setLocation(450,150);
+        this.setSize(WIDTH,HEIGHT);
+
+
 
     }
 
@@ -92,12 +99,14 @@ public class LoginFrame extends JFrame implements ActionListener {
                 if(user.isAdmin())
                 {
                    AdminFrame adminFrame = new AdminFrame();
+
                     //TODO Admin Window;
                 }
                 else {
 
-                    RegularUserFrame regularUserFrame = new RegularUserFrame(userService,accountService,personSercive);
+                    UserView regularUserFrame = new UserView();
                     regularUserFrame.setTitle("BOOK Store");
+                    regularUserFrame.setVisible(true);
 
                 }
             } else {
